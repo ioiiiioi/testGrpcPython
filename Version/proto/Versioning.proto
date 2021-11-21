@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+service VersioningService {
+  
+  rpc getSingleVersion (VersionIdRequest) returns (VersionDataResponse) {}
+  
+  rpc getMultiVersion (GetMultiVersionRequest) returns (GetMultiVersionResponse) {}
+  
+  rpc deleteVersion (VersionIdRequest) returns (VersionDataResponse) {}
+  
+  rpc forceDeleteVersion (VersionIdRequest) returns (VersionDataResponse) {}
+  
+  rpc postVersion (PostVersionRequest) returns (DeleteVersionResponse) {}
+  
+  rpc putVersion (PutVersionRequest) returns (DeleteVersionResponse) {}
+}
+
+// Requests Message
+message VersionIdRequest {
+  int64 id = 1;
+}
+
+message PostVersionRequest {
+  string names = 1;
+  string codeBases = 2;
+  string versions = 3;
+  bool activeStates = 4;
+  string description = 5;
+}
+
+message PutVersionRequest {
+  int64 id = 1;
+  string names = 2;
+  string codeBases = 3;
+  string versions = 4;
+  bool activeStates = 5;
+  string description = 6;
+}
+
+message GetMultiVersionRequest {
+}
+
+// Responses Message
+message VersionDataResponse {
+  int64 id = 1;
+  string names = 2;
+  string codeBases = 3;
+  string versions = 4;
+  bool activeStates = 5;
+  string description = 6;
+  string createdAt = 7;
+  string updatedAt = 8;
+}
+
+message DeleteVersionResponse {
+  bool status = 1;
+}
+
+message GetMultiVersionResponse {
+  repeated VersionDataResponse Version = 1;
+}
+

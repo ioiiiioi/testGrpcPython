@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package version_proto;
+
+import "google/protobuf/empty.proto";
+
+service VersionsController {
+    rpc List(VersionsListRequest) returns (stream Versions) {}
+    rpc Create(Versions) returns (Versions) {}
+    rpc Retrieve(VersionsRetrieveRequest) returns (Versions) {}
+    rpc Update(Versions) returns (Versions) {}
+    rpc Destroy(Versions) returns (google.protobuf.Empty) {}
+}
+
+message Versions {
+    int64 id = 1;
+    string names = 2;
+    string codeBases = 3;
+    string versions = 4;
+    bool activeStates = 5;
+    string description = 6;
+}
+
+message VersionsListRequest {
+}
+
+message VersionsRetrieveRequest {
+    int64 id = 1;
+}

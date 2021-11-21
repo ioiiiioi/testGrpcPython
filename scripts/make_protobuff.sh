@@ -1,0 +1,1 @@
+python -m grpc_tools.protoc --proto_path=./Version/proto --python_out=./Version/proto --grpc_python_out=./Version/proto ./Version/proto/Version.proto

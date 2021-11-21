@@ -1,0 +1,1 @@
+python manage.py generateproto --model Version.models.Versions --fields id,names,codeBases,versions,activeStates,description --file Version/proto/Version.proto
