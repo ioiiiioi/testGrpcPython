@@ -27,7 +27,7 @@ class VersioningServiceStub(object):
         self.deleteVersion = channel.unary_unary(
                 '/VersioningService/deleteVersion',
                 request_serializer=Versioning__pb2.VersionIdRequest.SerializeToString,
-                response_deserializer=Versioning__pb2.VersionDataResponse.FromString,
+                response_deserializer=Versioning__pb2.DeleteVersionResponse.FromString,
                 )
         self.forceDeleteVersion = channel.unary_unary(
                 '/VersioningService/forceDeleteVersion',
@@ -37,12 +37,12 @@ class VersioningServiceStub(object):
         self.postVersion = channel.unary_unary(
                 '/VersioningService/postVersion',
                 request_serializer=Versioning__pb2.PostVersionRequest.SerializeToString,
-                response_deserializer=Versioning__pb2.DeleteVersionResponse.FromString,
+                response_deserializer=Versioning__pb2.VersionDataResponse.FromString,
                 )
         self.putVersion = channel.unary_unary(
                 '/VersioningService/putVersion',
                 request_serializer=Versioning__pb2.PutVersionRequest.SerializeToString,
-                response_deserializer=Versioning__pb2.DeleteVersionResponse.FromString,
+                response_deserializer=Versioning__pb2.VersionDataResponse.FromString,
                 )
 
 
@@ -101,7 +101,7 @@ def add_VersioningServiceServicer_to_server(servicer, server):
             'deleteVersion': grpc.unary_unary_rpc_method_handler(
                     servicer.deleteVersion,
                     request_deserializer=Versioning__pb2.VersionIdRequest.FromString,
-                    response_serializer=Versioning__pb2.VersionDataResponse.SerializeToString,
+                    response_serializer=Versioning__pb2.DeleteVersionResponse.SerializeToString,
             ),
             'forceDeleteVersion': grpc.unary_unary_rpc_method_handler(
                     servicer.forceDeleteVersion,
@@ -111,12 +111,12 @@ def add_VersioningServiceServicer_to_server(servicer, server):
             'postVersion': grpc.unary_unary_rpc_method_handler(
                     servicer.postVersion,
                     request_deserializer=Versioning__pb2.PostVersionRequest.FromString,
-                    response_serializer=Versioning__pb2.DeleteVersionResponse.SerializeToString,
+                    response_serializer=Versioning__pb2.VersionDataResponse.SerializeToString,
             ),
             'putVersion': grpc.unary_unary_rpc_method_handler(
                     servicer.putVersion,
                     request_deserializer=Versioning__pb2.PutVersionRequest.FromString,
-                    response_serializer=Versioning__pb2.DeleteVersionResponse.SerializeToString,
+                    response_serializer=Versioning__pb2.VersionDataResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -175,7 +175,7 @@ class VersioningService(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/VersioningService/deleteVersion',
             Versioning__pb2.VersionIdRequest.SerializeToString,
-            Versioning__pb2.VersionDataResponse.FromString,
+            Versioning__pb2.DeleteVersionResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -209,7 +209,7 @@ class VersioningService(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/VersioningService/postVersion',
             Versioning__pb2.PostVersionRequest.SerializeToString,
-            Versioning__pb2.DeleteVersionResponse.FromString,
+            Versioning__pb2.VersionDataResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -226,6 +226,6 @@ class VersioningService(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/VersioningService/putVersion',
             Versioning__pb2.PutVersionRequest.SerializeToString,
-            Versioning__pb2.DeleteVersionResponse.FromString,
+            Versioning__pb2.VersionDataResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

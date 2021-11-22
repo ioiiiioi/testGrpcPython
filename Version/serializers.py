@@ -6,4 +6,5 @@ class versionSerializer(proto_serializers.ModelProtoSerializer):
     class Meta:
         model = Versions
         proto_class = Versioning_pb2.VersionDataResponse
-        fields = ['id', 'names', 'codeBases','versions','activeStates', 'description', 'createAt', 'updateAt', 'deleteAt']
+        # fields = '__all__'
+        fields = ['id', 'names', 'codeBases','versions','activeStates', 'description', 'createAt', 'updateAt']

@@ -6,13 +6,13 @@ service VersioningService {
   
   rpc getMultiVersion (GetMultiVersionRequest) returns (GetMultiVersionResponse) {}
   
-  rpc deleteVersion (VersionIdRequest) returns (VersionDataResponse) {}
+  rpc deleteVersion (VersionIdRequest) returns (DeleteVersionResponse) {}
   
   rpc forceDeleteVersion (VersionIdRequest) returns (VersionDataResponse) {}
   
-  rpc postVersion (PostVersionRequest) returns (DeleteVersionResponse) {}
+  rpc postVersion (PostVersionRequest) returns (VersionDataResponse) {}
   
-  rpc putVersion (PutVersionRequest) returns (DeleteVersionResponse) {}
+  rpc putVersion (PutVersionRequest) returns (VersionDataResponse) {}
 }
 
 // Requests Message
@@ -48,8 +48,8 @@ message VersionDataResponse {
   string versions = 4;
   bool activeStates = 5;
   string description = 6;
-  string createdAt = 7;
-  string updatedAt = 8;
+  string createAt = 7;
+  string updateAt = 8;
 }
 
 message DeleteVersionResponse {
@@ -57,6 +57,6 @@ message DeleteVersionResponse {
 }
 
 message GetMultiVersionResponse {
-  repeated VersionDataResponse Version = 1;
+  repeated VersionDataResponse version= 1;
 }
 
